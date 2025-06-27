@@ -5,6 +5,7 @@ using ArcGIS.Desktop.Mapping;
 using OpenCvSharp;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -299,6 +300,28 @@ namespace ArcGISUtils
             }
 
             return polyline;
+        }
+
+        public static void EmptyFolder(string folderPath, string extToKeep=null)
+        {
+            if (extToKeep == null)
+            {
+                Directory.Delete(folderPath, recursive: true);
+                return;
+            }
+
+            var directoryInfo = new DirectoryInfo(folderPath);
+
+            foreach (FileInfo file in directoryInfo.GetFiles())
+            {
+                if (file.Extension.Equals(extToKeep, StringComparison.CurrentCultureIgnoreCase)) continue;
+                file.Delete();
+            }
+
+            foreach (DirectoryInfo subfolder in directoryInfo.GetDirectories())
+            {
+                subfolder.Delete(recursive: true);
+            }
         }
 
         public static double RoundUp(double value, int decimalPlaces)

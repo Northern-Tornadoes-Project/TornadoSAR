@@ -23,11 +23,15 @@
               an empty group-->
         <group id="TornadoSAR_Group1" caption="" appearsOnAddInTab="false">
           <button refID="TornadoSAR_Main" size="large" />
+          <button refID="TornadoSAR_HailAnalysis" size="large" />
         </group>
       </groups>
       <controls>
         <!-- add your controls here -->
         <button id="TornadoSAR_Main" caption="Analysis" className="ShowMain" loadOnClick="true" smallImage="GenericButtonPurple16" largeImage="GenericButtonPurple32">
+          <tooltip heading="Tooltip Heading">Tooltip text<disabledText /></tooltip>
+        </button>
+        <button id="TornadoSAR_HailAnalysis" caption="HailAnalysis" className="ShowHailAnalysis" loadOnClick="true" smallImage="GenericButtonPurple16" largeImage="GenericButtonPurple32">
           <tooltip heading="Tooltip Heading">Tooltip text<disabledText /></tooltip>
         </button>
       </controls>
